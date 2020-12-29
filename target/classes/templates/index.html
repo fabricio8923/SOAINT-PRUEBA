@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
+        <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+        <section th:replace="layout/agregarCliente :: agregarCliente"></section>
+        <section th:replace="layout/listadoClientes :: listadoClientes"></section>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+        
+        <!--div th:if="${lista !=null and !lista.empty}">
+       <table border="1">
+           <tr>
+               <th>[[#{persona.nombre}]]</th>
+               <th>[[#{persona.apellidos}]]</th>
+               <th>[[#{persona.direccion}]]</th>
+               <th>[[#{persona.telefono}]]</th>
+               <th>[[#{persona.email}]]</th>
+               <th>[[#{persona.accion.editar}]]</th>
+               <th>[[#{persona.accion.eliminar}]]</th>
+               <th>[[#{persona.accion.eliminar}]]</th>
+           </tr>
+
+           <tr th:each="persona : ${lista}">
+               <td th:text="${persona.nombres}">nombres</td>
+               <td th:text="${persona.apellidos}">apellidos</td>
+               <td th:text="${persona.direccion}">direccion</td>
+               <td th:text="${persona.telefono}">telefono</td>
+               <td th:text="${persona.email}">email</td>
+               <td> <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.idpersona}" th:text="Editar"/></td>
+               <td> <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar/} + ${persona.idpersona}" th:text="Eliminar"/></td>
+               <td> <a th:href="@{/eliminar2(idpersona=${persona.idpersona})} " th:text="Eliminar2"/></td>
+           </tr>
+       </table>
+   </div>
+   <div th:if="${lista==null or lista.empty}">
+       LA lista esta vacia
+   </div-->
+
+    </body>
+
+</html>
